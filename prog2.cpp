@@ -32,8 +32,8 @@ void addressbook::addFriend(string n, string a){
 
 void addressbook::listFriends(){
   for(int i = 0; i < numberOfFriends; i++){
-    cout << friends[i].name << ":";
-    cout << friends[i].address << "\n";
+    cout << " " << friends[i].name << ":";
+    cout << " " << friends[i].address << "\n";
   }
 }
 
@@ -53,6 +53,6 @@ int main()
     abook.addFriend(name, address);
   }
 
-  cout << "\n名前リスト:\n";
+  cout << "\n 名前リスト:\n";
   abook.listFriends();
 }

@@ -20,9 +20,9 @@ int main()
     cout << i + 1 << "番目のメールアドレスは？";
     cin >> address[i].email;
   }
-  cout << "\n名前リスト:\n";
+  cout << "\n 名前リスト:\n";
   for(int i=0; i<3; i++){
-    cout << friends[i].name << ":";
+    cout << " " << friends[i].name << ":";
     cout << address[i].email << "\n";
   }
 }
