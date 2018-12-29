@@ -11,15 +11,13 @@ public:
 
 class addressbook{
   person friends[100];
-  person address[100];
-  person no_one;
 
 public:
   addressbook();
   void listFriends();
   void addFriend(string name, string address);
   int numberOfFriends;
-  void find(string query);
+  person find(string query);
 };
 
 // constructor
@@ -29,26 +27,26 @@ addressbook::addressbook(){
 
 void addressbook::addFriend(string n, string a){
   friends[numberOfFriends].name = n;
-  address[numberOfFriends].address = a;
+  friends[numberOfFriends].address = a;
   numberOfFriends++;
 }
 
 void addressbook::listFriends(){
   for(int i = 0; i < numberOfFriends; i++){
     cout << friends[i].name << ":";
-    cout << address[i].address << "\n";
+    cout << friends[i].address << "\n";
   }
 }
 
-void addressbook::find(string query){
+person addressbook::find(string query){
   for(int i = 0; i < numberOfFriends; i++){
     if(query == friends[i].name){
-      cout << friends[i].name << ":";
-      cout << address[i].address << "\n";
-    }else{
+      return friends[i];
+    }/*else{
+      person no_one;
       no_one.name = "";
-      cout << no_one.name << "\n";
-    }
+      return no_one;
+    }*/
   }
 }
 
@@ -69,13 +67,13 @@ int main(){
     abook.addFriend(name, address);
   }
 
-  cout << "\n名前リスト:\n";
-  abook.listFriends();
-
+  cout << "検索する氏名を入力してください:";
+  cin >> query;
   found = abook.find(query);
-  //if(found.name ~= ""){
-    //cout << found.name << ":" << found.address;
-  //}else{
-    //cout << "見つかりませんでした。";
-  //}
+  if(found.name != ""){
+    cout << found.name << ":" << found.address;
+  }else{
+    cout << "見つかりませんでした。";
+  }
+
 }

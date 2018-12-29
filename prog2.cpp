@@ -11,7 +11,6 @@ public:
 
 class addressbook{
   person friends[100];
-  person address[100];
   int numberOfFriends;
 
 public:
@@ -27,14 +26,14 @@ addressbook::addressbook(){
 
 void addressbook::addFriend(string n, string a){
   friends[numberOfFriends].name = n;
-  address[numberOfFriends].address = a;
+  friends[numberOfFriends].address = a;
   numberOfFriends++;
 }
 
 void addressbook::listFriends(){
   for(int i = 0; i < numberOfFriends; i++){
     cout << friends[i].name << ":";
-    cout << address[i].address << "\n";
+    cout << friends[i].address << "\n";
   }
 }
 
