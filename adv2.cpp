@@ -1,5 +1,6 @@
 /* adv1 */
 
+/* inheritance.cpp */
 #include <iostream>
 #include <stdio.h>
 using namespace std;
@@ -27,6 +28,9 @@ class hm{
 public:
   int hour;
   int minute;
+  inMinutes();
+  hm(int timeInMinutes);
+
 };
 
 class trainTicket : public transTicket {
@@ -36,6 +40,11 @@ public:
   hm arrivalTime;
 };
 
+hm::inMinutes(){
+  for(int i = 0; i < ticketNum; i++){
+    cout << tickets[i].arrivalTime.hour * 60 +  tickets[i].arrivalTime.minute = minute << "\n";
+  }
+}
 
 
 int main()
