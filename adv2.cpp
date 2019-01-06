@@ -1,6 +1,5 @@
-/* adv1 */
+/* adv2 */
 
-/* inheritance.cpp */
 #include <iostream>
 #include <stdio.h>
 using namespace std;
@@ -21,6 +20,7 @@ class transTicket : public ticket {
 public:
   string origin;
   string destination;
+  int requiredTime;
   transTicket(): ticket(){};
 };
 
@@ -28,30 +28,38 @@ class hm{
 public:
   int hour;
   int minute;
-  inMinutes();
-  hm(int timeInMinutes);
-
+  int tm;
+  hm(int);
+  void inMinutes(int h, int m){
+    cout << h * 60 +  m << "\n";
+  };
 };
 
 class trainTicket : public transTicket {
 public:
+
   trainTicket(): transTicket(){};
   hm departureTime;
   hm arrivalTime;
 };
 
-hm::inMinutes(){
-  for(int i = 0; i < ticketNum; i++){
-    cout << tickets[i].arrivalTime.hour * 60 +  tickets[i].arrivalTime.minute = minute << "\n";
-  }
+hm::hm(int timeInMinutes){
+  tm = timeInMinutes;
 }
 
 
 int main()
 {
+  hm t(125);
+  cout << t.tm;
+  return 0;
+
   int ticketNum;
   int hour;
   int minute;
+  int reqh;
+  int reqm;
+  hm hm;
   cout << "チケットを何枚購入しますか? ";
   cin >> ticketNum;
   cout << "\n";
@@ -72,11 +80,15 @@ int main()
     scanf("%d:%d", &hour, &minute);
     tickets[i].arrivalTime.hour = hour;
     tickets[i].arrivalTime.minute = minute;
+    reqh = tickets[i].arrivalTime.hour - tickets[i].departureTime.hour;
+    reqm = tickets[i].arrivalTime.minute - tickets[i].departureTime.minute;
   }
   cout << "\n チケット利用者一覧:\n";
   for(int i = 0; i < ticketNum; i++){
     trainTicket t = tickets[i];
-    cout << " " << t.id << " : " << t.user->name << " : " << t.origin << "(" << t.departureTime.hour << ":" << t.departureTime.minute << ") => " << t.destination << "(" << t.arrivalTime.hour << ":" << t.arrivalTime.minute << ")\n";
+    cout << " " << t.id << " : " << t.user->name << " : " << t.origin << "(" << t.departureTime.hour << ":" << t.departureTime.minute << ") => " << t.destination << "(" << t.arrivalTime.hour << ":" << t.arrivalTime.minute << ") ";
+    cout << " 所要時間(分)：";
+    hm.inMinutes(reqh, reqm);
   }
   cout << "\n";
 }
